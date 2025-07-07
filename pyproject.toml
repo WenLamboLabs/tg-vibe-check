@@ -1,0 +1,25 @@
+[project]
+name = "tg-vibe-check"
+version = "0.1.0"
+description = "Read the room before the room reads you - A Telegram channel sentiment analyzer"
+requires-python = ">=3.12"
+dependencies = [
+    "ruff>=0.11.10",
+    "requests>=2.32.0",
+    "beautifulsoup4>=4.12.0",
+    "litellm>=1.0.0",
+    "streamlit>=1.40.0",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+indent-style = "tab"
+quote-style = "single"
+
+[tool.ruff.lint.isort]
+force-single-line = true
+
+[tool.poetry]
+package-mode = false
