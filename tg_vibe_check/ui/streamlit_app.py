@@ -1,10 +1,7 @@
 import streamlit as st
 
-from llm import analyze_tg_vibe
-from rapidapi import get_tg_messages
-
-# Configure page title and icon
-st.set_page_config(page_title='TG Vibe Check', page_icon='🔍')
+from tg_vibe_check.core.llm import analyze_tg_vibe
+from tg_vibe_check.integrations.rapidapi import get_tg_messages_bulk
 
 
 def get_status_colors(score, good_threshold, bad_threshold, higher_is_better=True):
@@ -41,20 +38,22 @@ def render_metric(label, value, help_text, good_threshold, bad_threshold, higher
 	)
 
 
-# Custom CSS to hide arrows in metrics
-st.markdown(
-	"""
-<style>
-div[data-testid="stMetricDelta"] svg {
-    display: none;
-}
-</style>
-""",
-	unsafe_allow_html=True,
-)
-
-
 def main():
+	# Custom CSS to hide arrows in metrics
+	st.markdown(
+		"""
+	<style>
+	div[data-testid="stMetricDelta"] svg {
+	    display: none;
+	}
+	</style>
+	""",
+		unsafe_allow_html=True,
+	)
+
+	# Configure page title and icon
+	st.set_page_config(page_title='TG Vibe Check', page_icon='🔍')
+
 	st.title('TG Vibe Check')
 	st.markdown(
 		'Read the room before the room reads you. Built by [WenLambo Labs](https://wenl.ai/blog/tg-vibe-check).'
@@ -82,7 +81,7 @@ def main():
 		with st.status('Running vibe check analysis...', expanded=True) as status:
 			st.write('📡 Scanning community channel...')
 			try:
-				messages = get_tg_messages(channel)
+				messages = get_tg_messages_bulk(channel)
 				st.write(f'✅ Retrieved {len(messages)} messages')
 			except Exception as e:
 				st.error(f'❌ Failed to fetch messages: {str(e)}')

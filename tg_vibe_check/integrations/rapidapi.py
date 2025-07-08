@@ -35,7 +35,7 @@ def get_tg_messages(channel: str, limit: int = 50, max_id: int = 999999999) -> L
 	]
 
 
-def get_tg_messages_bulk(channel: str, batch_size: int = 5) -> List[Dict[str, str]]:
+def get_tg_messages_bulk(channel: str, batch_size: int = 4) -> List[Dict[str, str]]:
 	"""Get multiple batches of messages from a Telegram channel using RapidAPI."""
 
 	all_messages = []

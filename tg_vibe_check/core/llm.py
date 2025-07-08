@@ -5,7 +5,7 @@ from typing import List
 from bs4 import BeautifulSoup
 from litellm import completion
 
-from prompt import PROMPT
+from tg_vibe_check.core.prompt import PROMPT
 
 
 def analyze_tg_vibe(messages: List[Dict[str, str]], model: str = 'anthropic/claude-sonnet-4-20250514') -> Dict:

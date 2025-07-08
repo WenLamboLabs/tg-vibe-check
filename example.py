@@ -1,5 +1,5 @@
-from llm import analyze_tg_vibe
-from rapidapi import get_tg_messages
+from tg_vibe_check.core.llm import analyze_tg_vibe
+from tg_vibe_check.integrations.rapidapi import get_tg_messages
 
 if __name__ == '__main__':
 	try:
